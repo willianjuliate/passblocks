@@ -4,7 +4,7 @@ from time import sleep
 
 pygame.init()
 
-pygame_icon = pygame.image.load('image/miniatura.png')
+pygame_icon = pygame.image.load('assets/images/miniatura.png')
 pygame.display.set_icon(pygame_icon)
 
 # Definições da Janela
@@ -17,8 +17,8 @@ clock = pygame.time.Clock()
 dt = 0
 
 # Definições dos Objetos
-fonte = pygame.font.SysFont('Segoe UI', 18)
-fonte_lose = pygame.font.SysFont('Segoe UI', 100)
+fonte = pygame.font.Font('assets/font/pixelart.ttf', 14)
+fonte_lose = pygame.font.Font('assets/font/pixelart.ttf', 100)
 
 player: pygame.Rect = pygame.Rect(10, 380, 20, 20)
 apple: pygame.Rect = pygame.Rect(1030, 390, 8, 8)
@@ -51,7 +51,7 @@ while running:
 
     screen.fill('#262626')
     screen.blit(fonte.render(
-        f'score:{score}', True, (255, 255, 255)), (10, 25))
+        f'{score}', True, (255, 255, 255)), (10, 30))
 
     for i in range(len(block)):
         pygame.draw.rect(screen, '#303030', block[i][1])  # Barra
@@ -106,8 +106,8 @@ while running:
             player.left = -1
 
     if lifes == 0:
-        screen.blit(fonte_lose.render(f'# YOU LOSE #',
-                    True, (255, 255, 255)), (300, 100))
+        screen.blit(fonte_lose.render(f'you lose',
+                    True, (255, 255, 255)), (250, 100))
         if keys[pygame.K_SPACE]:
             running = False
 
